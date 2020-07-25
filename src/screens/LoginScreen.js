@@ -28,7 +28,7 @@ class LoginScreen extends React.Component {
   render() {
     return (
       <div className="container">
-        <form onSubmit={this.startSubmitHandler}>
+        <form onSubmit={()=>this.startSubmitHandler(this.state.player1,this.state.player2)}>
           <div className="row">
             <div className="col-25">
               <label>Player 1</label>
