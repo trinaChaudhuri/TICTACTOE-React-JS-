@@ -1,14 +1,71 @@
 import React from "react";
-import Square from "./Square";
+import Square from "./square";
+import { calculateWinner } from "../helper";
+class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+      xIsNext: true,
+    };
+  }
 
-const Board = ({ squares, onClick }) => {
-  return (
-    <div className="board">
-      {squares.map((square, i) => (
-        <Square key={i} value={square} onClick={() => onClick(i)} />
-      ))}
-    </div>
-  );
-};
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+    squares[i] = this.state.xIsNext ? "X" : "O";
+    this.setState({
+      squares: squares,
+      xIsNext: !this.state.xIsNext,
+    });
+  }
+  renderSquare(i) {
+    return (
+      <Square
+        value={this.state.squares[i]}
+        onClick={() => this.handleClick(i)}
+      />
+    );
+  }
+
+  render() {
+    // const status = "Next Player: "+ (this.state.xIsNext ? this.props.player1 : this.props.player2);
+    const winner = calculateWinner(this.state.squares);
+    let status;
+    if (winner) {
+      status =
+        "Winner: " +
+        (this.state.xIsNext ? this.props.player2 : this.props.player1);
+    } else {
+      status =
+        "Next player: " +
+        (this.state.xIsNext ? this.props.player1 : this.props.player2);
+    }
+
+    return (
+      <>
+        <div className="status">{status}</div>
+
+        <div className="board-row">
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        </div>
+      </>
+    );
+  }
+}
 
 export default Board;

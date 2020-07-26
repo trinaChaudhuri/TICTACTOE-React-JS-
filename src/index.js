@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import Routes from './routes';
+import UserName from './components/UserName'
 
 import './index.css'
 import Game from './components/Game'
 
-ReactDOM.render(<Game />,document.getElementById("root"))
+ReactDOM.render(<UserName />,document.getElementById("root"))
