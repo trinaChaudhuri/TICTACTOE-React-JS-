@@ -7,12 +7,7 @@ export default class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
-          <Board player1={this.props.player1} player2={this.props.player2}/>
-        </div>
-       
-        <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+          <Board player1={this.props.player1} player2={this.props.player2}  />
         </div>
       </div>
     );

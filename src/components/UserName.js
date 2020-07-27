@@ -23,7 +23,7 @@ export default class UserName extends React.Component {
     return (
       <>
         <div className="row">
-          <form >
+          <form>
             <label>
               Player 1:
               <input
@@ -42,9 +42,10 @@ export default class UserName extends React.Component {
                 onChange={this.handleChangePlayer2}
               />
             </label>
+          
           </form>
         </div>
-        <Game player1={this.state.player1} player2={this.state.player2}/>
+        <Game player1={this.state.player1} player2={this.state.player2}  />
       </>
     );
   }
