@@ -11,7 +11,7 @@ class Board extends React.Component {
       showTimer: false,
       resetTimer: false,
       boardAttr: "X",
-      seconds: 11,
+      seconds: 5,
     };
   }
 
